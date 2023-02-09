@@ -1,0 +1,66 @@
+Addition
+1000 MOV AX,[2000]
+1004 MOV BX,[2002]
+1008 MOV CL,00
+100B ADD AX,BX
+100D JNC 1011
+100F INC CL
+1011 MOV [2004],AX
+1015 MOV [2006],CL
+1019 HLT
+
+
+Multiplication
+MOV AX,[3000]
+MOV BX,[3002]
+MUL BX
+MOV [3004],AX
+MOV [3006],BX
+HLT
+
+
+Division
+MOV AX,[3000]
+MOV BX,[3002]
+DIV BX
+MOV [4000],AX
+HLT
+
+
+sorting
+400       MOV SI,500
+404       M0V CL,[SI]
+406       DEC CL
+408 Again:MOV SI,500
+          MOV CH,[SI]
+          DEC CH
+          INC SI
+          CMP AL,[SI]
+          JC SKIP
+          XCHG AL,[SI]
+          DEC SI
+          XCHG AL,[SI]
+          INC SI
+41E SKIP: DEC CH
+          JNC LOOP
+          DEC CL
+          JNZ Again
+          HLT
+          
+          
+ SEARCHING
+ A
+ 2000 MOV CH,00H
+ 2003 MOV CL,[3000]
+      MOV BX,[3001]
+      MOV SI,3003
+      CMP BX,[SI]
+      JNZ LOC2
+      INC CH
+      JMP LOC3
+2018  LOC2: INC SI  
+            INC SI
+            DEC CL
+            JNZ 2000F
+201E  LOC3: MOV[3050],CH
+            HLT
